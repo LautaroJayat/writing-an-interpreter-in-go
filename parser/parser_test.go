@@ -229,7 +229,7 @@ func TestInfixExpression(t *testing.T) {
 		}
 		exp, ok := stmt.Expression.(*ast.InfixExpression)
 		if !ok {
-			t.Fatalf("literal is not *ast.PrefixExpression, instead got %T", stmt.Expression)
+			t.Fatalf("literal is not *ast.InfixExpression, instead got %T", stmt.Expression)
 		}
 		if !testIntegerLiteral(t, exp.Left, tt.leftValue) {
 			return

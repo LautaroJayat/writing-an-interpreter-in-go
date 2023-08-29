@@ -182,7 +182,7 @@ func (p *Parser) parseExpressionStatement() *ast.ExpressionStatement {
 
 func (p *Parser) parseExpression(precedence int) ast.Expression {
 	prefix := p.prefixParseFns[p.curToken.Type]
-	fmt.Println(p.curToken)
+
 	if prefix == nil {
 		p.noPrefixParseFnError(p.curToken.Type)
 		return nil
@@ -191,7 +191,6 @@ func (p *Parser) parseExpression(precedence int) ast.Expression {
 
 	for !p.peekTokenIs(token.SEMICOLON) && precedence < p.peekPrecedence() {
 		infix := p.infixParseFns[p.peekToken.Type]
-		fmt.Println(infix, p.peekToken)
 		if infix == nil {
 			return leftExpr
 		}
