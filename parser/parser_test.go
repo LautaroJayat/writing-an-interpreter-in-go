@@ -129,11 +129,11 @@ func TestIntegerLiteralExpression(t *testing.T) {
 	if !ok {
 		t.Fatalf("program.Statements[0] is not expression, instead got %T", stmt)
 	}
-	literal, ok := stmt.Expression.(*ast.Identifier)
+	literal, ok := stmt.Expression.(*ast.IntegerLiteral)
 	if !ok {
 		t.Fatalf("literal is not *ast.IntegerLiteral, instead got %T", stmt.Expression)
 	}
-	if literal.Value != "foobar" {
+	if literal.Value != 5 {
 		t.Errorf("literal.Value is not '5', instead got '%q'", literal.Value)
 	}
 	if literal.TokenLiteral() != "5" {
